@@ -14,17 +14,13 @@ def accueil(request):
     """
     Vue d'accueil simple
     
-    Cette vue affiche la page d'accueil du site. Pour l'instant,
-    elle retourne du HTML directement via HttpResponse.
-    
-    Note: Dans une vraie application, on utiliserait plutôt
-    un template HTML pour la page d'accueil.
+    Cette vue affiche la page d'accueil du site. 
     
     Args:
         request (HttpRequest): L'objet requête HTTP de Django
         
     Returns:
-        HttpResponse: La page d'accueil en HTML
+        HttpResponse: La page d'index généré à partir du template
     """
     # Retour direct de HTML (méthode simple pour démonstration)
     # Dans un vrai projet, on utiliserait render() avec un template
