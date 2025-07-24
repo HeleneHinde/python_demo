@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}{{ article.titre }} - Mon Blog Django{% endblock %}
+
+{% block meta_description %}{{ article.contenu|truncatewords:20 }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/articles.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="article-detail">
+    <header>
+        <h1>{{ article.titre }}</h1>
+        
+        <div class="article-meta">
+            <div class="author-info">
+                👤 Par <strong>{{ article.auteur.first_name }} {{ article.auteur.last_name }}</strong>
+            </div>
+            <div class="date-info">
+                📅 Publié le {{ article.date_creation|date:"d/m/Y à H:i" }}
+            </div>
+            {% if article.date_modification != article.date_creation %}
+            <div class="update-info">
+                ✏️ Mis à jour le {{ article.date_modification|date:"d/m/Y à H:i" }}
+            </div>
+            {% endif %}
+            {% if article.categorie %}
+            <div class="category-info">
+                <span class="categorie" style="background-color: {{ article.categorie.couleur }}">
+                    🏷️ {{ article.categorie.nom }}
+                </span>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    
+    <div class="article-content">
+        {{ article.contenu|linebreaks }}
+    </div>
+</article>
+
+{% if articles_similaires %}
+<section class="articles-similaires">
+    <h3>📖 Articles similaires</h3>
+    {% for article_sim in articles_similaires %}
+    <div class="article-similaire">
+        <h4><a href="{{ article_sim.get_absolute_url }}">{{ article_sim.titre }}</a></h4>
+        <p>{{ article_sim.get_resume }}</p>
+        <small>Par {{ article_sim.auteur.first_name }} {{ article_sim.auteur.last_name }} - {{ article_sim.date_creation|date:"d/m/Y" }}</small>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<div style="margin-top: 30px; text-align: center;">
+    <a href="{% url 'liste_articles' %}" class="btn btn-secondary">← Retour à la liste des articles</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'blog/js/articles.js' %}"></script>
+{% endblock %}

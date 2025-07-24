@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}{{ titre }} - Mon Blog Django{% endblock %}
+
+{% block content %}
+<h1>{{ titre }}</h1>
+
+<div class="about-content" style="line-height: 1.8; font-size: 1.1em;">
+    <p>{{ description }}</p>
+    
+    <div style="margin: 30px 0; padding: 20px; background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; border-left: 4px solid #007bff;">
+        <h3 style="margin-top: 0; color: #007bff;">🚀 Technologies utilisées</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 8px;"><strong>🐍 Python:</strong> Langage de programmation principal</li>
+            <li style="margin-bottom: 8px;"><strong>🎯 Django:</strong> Framework web moderne et puissant</li>
+            <li style="margin-bottom: 8px;"><strong>💾 SQLite:</strong> Base de données légère et efficace</li>
+            <li style="margin-bottom: 8px;"><strong>🎨 CSS3:</strong> Styles modernes et responsifs</li>
+            <li style="margin-bottom: 8px;"><strong>⚡ JavaScript:</strong> Interactivité et animations</li>
+        </ul>
+    </div>
+    
+    <div style="margin: 30px 0; padding: 20px; background-color: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+        <h3 style="margin-top: 0; color: #856404;">📚 Fonctionnalités</h3>
+        <ul>
+            <li>📝 Système de blog complet</li>
+            <li>🏷️ Catégorisation des articles</li>
+            <li>👥 Gestion des utilisateurs</li>
+            <li>⚡ Interface d'administration</li>
+            <li>📱 Design responsive</li>
+            <li>🔍 Recherche et pagination</li>
+        </ul>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-style: italic; color: #6c757d;">
+            Ce projet a été créé dans un but d'apprentissage et de démonstration des capacités de Django.
+        </p>
+        <a href="{% url 'liste_articles' %}" class="btn" style="margin-top: 20px;">
+            📚 Découvrir les articles
+        </a>
+    </div>
+</div>
+{% endblock %}

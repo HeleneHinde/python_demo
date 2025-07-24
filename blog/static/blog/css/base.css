@@ -1,0 +1,205 @@
+/**
+ * STYLES DE BASE POUR LE BLOG DJANGO
+ * ================================
+ * 
+ * Ce fichier contient tous les styles de base partagés par toutes les pages
+ * du site. Il définit la typographie, les couleurs, la mise en page générale
+ * et les composants réutilisables.
+ * 
+ * Organisation :
+ * 1. Reset et base
+ * 2. Layout général
+ * 3. Navigation
+ * 4. Typographie
+ * 5. Composants (boutons, liens)
+ * 6. Responsive design
+ */
+
+/* ================================
+   1. RESET ET STYLES DE BASE
+   ================================ */
+
+/* Reset pour une cohérence entre navigateurs */
+* {
+    margin: 0;              /* Supprime les marges par défaut */
+    padding: 0;             /* Supprime les paddings par défaut */
+    box-sizing: border-box; /* Inclut padding et border dans la largeur */
+}
+
+/* Styles de base pour le body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne */
+    line-height: 1.6;       /* Espacement entre les lignes pour la lisibilité */
+    color: #333;            /* Couleur de texte sombre mais pas noir pur */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Dégradé subtil */
+    min-height: 100vh;      /* Hauteur minimum = hauteur de l'écran */
+}
+
+/* ================================
+   2. LAYOUT GÉNÉRAL
+   ================================ */
+
+/* Container principal pour centrer le contenu */
+.container {
+    max-width: 900px;                           /* Largeur maximum pour la lisibilité */
+    margin: 0 auto;                             /* Centrage horizontal */
+    padding: 20px;                              /* Espacement intérieur */
+    background-color: white;                    /* Fond blanc pour le contenu */
+    border-radius: 15px;                        /* Coins arrondis modernes */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);  /* Ombre douce pour l'effet de carte */
+    margin-top: 20px;                          /* Espace en haut */
+    margin-bottom: 20px;                       /* Espace en bas */
+}
+
+/* ================================
+   3. NAVIGATION
+   ================================ */
+
+/* Barre de navigation principale */
+.nav {
+    margin-bottom: 30px;                /* Espace sous la navigation */
+    border-bottom: 2px solid #e9ecef;  /* Ligne de séparation */
+    padding-bottom: 20px;               /* Espace avant la ligne */
+}
+
+/* Liens de navigation */
+.nav a {
+    text-decoration: none;              /* Supprime le soulignement */
+    color: #007bff;                     /* Couleur bleue Bootstrap */
+    margin-right: 20px;                 /* Espace entre les liens */
+    font-weight: 600;                   /* Texte semi-gras */
+    padding: 8px 16px;                  /* Espacement intérieur pour zone cliquable */
+    border-radius: 6px;                 /* Coins arrondis */
+    transition: all 0.3s ease;         /* Animation fluide sur tous les changements */
+    display: inline-block;              /* Permet padding vertical */
+}
+
+/* Effet au survol des liens */
+.nav a:hover {
+    background-color: #007bff;          /* Fond bleu au survol */
+    color: white;                       /* Texte blanc au survol */
+    transform: translateY(-2px);       /* Légère élévation */
+}
+
+/* Lien actif (page courante) */
+.nav a.active {
+    background-color: #007bff;          /* Fond bleu permanent */
+    color: white;                       /* Texte blanc permanent */
+}
+
+/* Bouton administration spécial */
+.nav a[href="/admin/"] {
+    background-color: #28a745 !important;  /* Vert pour l'admin */
+    color: white !important;                /* Texte blanc */
+    border: 2px solid #20c997;              /* Bordure légèrement différente */
+    font-weight: bold;                      /* Texte en gras */
+}
+
+.nav a[href="/admin/"]:hover {
+    background-color: #218838 !important;  /* Vert plus foncé au survol */
+    transform: translateY(-3px);           /* Élévation plus marquée */
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Ombre verte */
+}
+
+/* ================================
+   4. TYPOGRAPHIE
+   ================================ */
+
+/* Titre principal (H1) */
+h1 {
+    color: #2c3e50;                     /* Couleur sombre élégante */
+    margin-bottom: 20px;                /* Espace sous le titre */
+    font-size: 2.2em;                  /* Taille importante */
+    border-bottom: 3px solid #3498db;  /* Ligne de soulignement colorée */
+    padding-bottom: 10px;               /* Espace avant la ligne */
+}
+
+/* Sous-titre (H2) */
+h2 {
+    color: #34495e;                     /* Couleur légèrement plus claire que H1 */
+    margin-bottom: 15px;                /* Espace sous le sous-titre */
+    font-size: 1.8em;                  /* Taille intermédiaire */
+}
+
+/* Titre de section (H3) */
+h3 {
+    color: #34495e;                     /* Même couleur que H2 */
+    margin-bottom: 10px;                /* Espace réduit */
+    font-size: 1.4em;                  /* Taille plus petite */
+}
+
+/* Paragraphes */
+p {
+    margin-bottom: 15px;                /* Espace entre les paragraphes */
+    text-align: justify;                /* Justification pour une lecture agréable */
+}
+
+/* ================================
+   5. COMPOSANTS RÉUTILISABLES
+   ================================ */
+
+/* Liens génériques */
+a {
+    color: #3498db;                     /* Couleur bleue claire */
+    transition: color 0.3s ease;       /* Transition douce sur la couleur */
+}
+
+a:hover {
+    color: #2980b9;                     /* Couleur plus foncée au survol */
+}
+
+/* Boutons de base */
+.btn {
+    display: inline-block;              /* Permet padding et margin */
+    padding: 10px 20px;                 /* Espacement confortable */
+    background-color: #3498db;          /* Fond bleu */
+    color: white;                       /* Texte blanc */
+    text-decoration: none;              /* Pas de soulignement */
+    border-radius: 5px;                 /* Coins arrondis */
+    transition: all 0.3s ease;         /* Animation sur tous les changements */
+    border: none;                       /* Pas de bordure */
+    cursor: pointer;                    /* Curseur pointeur */
+}
+
+/* Effet au survol des boutons */
+.btn:hover {
+    background-color: #2980b9;          /* Couleur plus foncée */
+    transform: translateY(-2px);       /* Élévation légère */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ombre au survol */
+}
+
+/* Bouton secondaire (variante grise) */
+.btn-secondary {
+    background-color: #95a5a6;          /* Gris */
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;          /* Gris plus foncé au survol */
+}
+
+/* ================================
+   6. RESPONSIVE DESIGN
+   ================================ */
+
+/* Styles pour tablettes et mobiles */
+@media (max-width: 768px) {
+    /* Container adaptatif */
+    .container {
+        margin: 10px;                   /* Marges réduites sur mobile */
+        padding: 15px;                  /* Padding réduit */
+        border-radius: 10px;            /* Coins moins arrondis */
+    }
+    
+    /* Navigation mobile */
+    .nav a {
+        display: block;                 /* Liens en colonne */
+        margin-bottom: 10px;            /* Espace entre les liens */
+        margin-right: 0;                /* Supprime la marge droite */
+        text-align: center;             /* Centrage du texte */
+    }
+    
+    /* Titre adaptatif */
+    h1 {
+        font-size: 1.8em;              /* Taille réduite sur mobile */
+    }
+}

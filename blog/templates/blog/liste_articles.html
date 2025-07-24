@@ -1,0 +1,76 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}{{ titre }} - Mon Blog Django{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/articles.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ titre }}</h1>
+
+{% if articles %}
+    {% for article in articles %}
+    <article class="article">
+        <header>
+            <h3><a href="{{ article.get_absolute_url }}">{{ article.titre }}</a></h3>
+            <div class="article-meta">
+                <div class="author-date">
+                    👤 <strong>{{ article.auteur.first_name }} {{ article.auteur.last_name }}</strong>
+                    📅 {{ article.date_creation|date:"d/m/Y à H:i" }}
+                    {% if article.is_recent %}
+                        <span style="color: #28a745; font-weight: bold;">🆕 Nouveau</span>
+                    {% endif %}
+                </div>
+                {% if article.categorie %}
+                <div class="category-info">
+                    <span class="categorie" style="background-color: {{ article.categorie.couleur }}">
+                        🏷️ {{ article.categorie.nom }}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+        
+        <div class="article-excerpt">
+            {{ article.get_resume }}
+        </div>
+        
+        <footer style="margin-top: 15px;">
+            <a href="{{ article.get_absolute_url }}" class="btn">Lire la suite →</a>
+        </footer>
+    </article>
+    {% endfor %}
+    
+    <!-- Pagination -->
+    {% if articles.has_other_pages %}
+    <nav class="pagination">
+        {% if articles.has_previous %}
+            <a href="?page=1">&laquo; première</a>
+            <a href="?page={{ articles.previous_page_number }}">précédente</a>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ articles.number }} sur {{ articles.paginator.num_pages }}
+        </span>
+        
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}">suivante</a>
+            <a href="?page={{ articles.paginator.num_pages }}">dernière &raquo;</a>
+        {% endif %}
+    </nav>
+    {% endif %}
+    
+{% else %}
+    <div class="no-articles">
+        <span style="font-size: 3em; display: block; margin-bottom: 20px;">📝</span>
+        <p>Aucun article publié pour le moment.</p>
+        <p>Revenez bientôt pour découvrir du nouveau contenu !</p>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'blog/js/articles.js' %}"></script>
+{% endblock %}
